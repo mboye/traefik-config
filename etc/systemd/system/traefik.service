@@ -1,0 +1,15 @@
+[Unit]
+Description=Traefik Reverse Proxy
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=traefik
+WorkingDirectory=/var/lib/traefik
+Environment=DO_AUTH_TOKEN=CHANGE_THIS
+ExecStart=/usr/local/bin/traefik --configFile=/etc/traefik/traefik.toml
+
+[Install]
+WantedBy=multi-user.target
